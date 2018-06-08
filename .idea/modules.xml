@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/businesslayerworker/businesslayerworker.iml" filepath="$PROJECT_DIR$/businesslayerworker/businesslayerworker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/databaseworker/databaseworker.iml" filepath="$PROJECT_DIR$/databaseworker/databaseworker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ocrworker/ocrworker.iml" filepath="$PROJECT_DIR$/ocrworker/ocrworker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/workerservice.iml" filepath="$PROJECT_DIR$/workerservice.iml" />
+    </modules>
+  </component>
+</project>

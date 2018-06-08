@@ -1,0 +1,4 @@
+com\everis\WorkerApp.class
+com\everis\receiver\ReceiverWorker.class
+com\everis\tokenuser\TokenUser.class
+com\everis\receiver\FinereaderWorker.class

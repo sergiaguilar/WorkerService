@@ -1,0 +1,13 @@
+com\everis\billingworker\model\License.class
+com\everis\autorization\repository\UsersRepository.class
+com\everis\billingworker\repository\FacturationRepository.class
+com\everis\ocrworker\model\Ticket.class
+com\everis\autorization\model\Users.class
+com\everis\ocrworker\repository\TicketRepository.class
+com\everis\autorization\model\Products.class
+com\everis\ocrworker\TesseractImpl.class
+com\everis\billingworker\model\Facturation.class
+com\everis\autorization\repository\ProductsRepository.class
+com\everis\billingworker\model\FacturationComposed.class
+com\everis\ocrworker\FinereaderImpl.class
+com\everis\billingworker\repository\LicenseRepository.class

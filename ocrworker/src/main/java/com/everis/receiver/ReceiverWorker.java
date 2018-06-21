@@ -1,15 +1,20 @@
 package com.everis.receiver;
 
+import com.microsoft.azure.servicebus.*;
+import com.microsoft.azure.servicebus.primitives.ServiceBusException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 
 @Component
 public class ReceiverWorker {
 
-    private static String UPLOADED_FOLDER = "C:\\Temp\\";
+    private String UPLOADED_FOLDER = "C:\\Temp\\";
 
     private String imagePath;
     private String exportPath;
@@ -34,33 +39,58 @@ public class ReceiverWorker {
         ocr = parts[4];
     }
 
-    private CountDownLatch latch = new CountDownLatch(1);
 
-    public void receiveMessage(String message) {
-        System.out.println("Message received!");
-        separar(message);
+    @Autowired
+    private QueueClient queueClientForReceiving;
 
-        imagePath = UPLOADED_FOLDER + "Entrada\\" + ticket + extension;
-        exportPath = UPLOADED_FOLDER + "Salida\\" + ticket + ".txt";
-        if(ocr.equals("ABYYFR")) {
-            finereaderWorker.ocrFineReaderExec(imagePath,exportPath,precision,token,ticket);
+    @PostConstruct
+    private void postConstruct() throws InterruptedException {
+        try {
+            queueClientForReceiving.registerMessageHandler(new MessageHandler(),
+                    new MessageHandlerOptions());
+        } catch (InterruptedException e) {
+            System.out.println("Error registering message handler :" + e);
+        } catch (ServiceBusException e) {
+            System.out.println("Error registering message handler: " + e);
         }
-        else if (ocr.equals("tesseract")) {
-            tesseractWorker.ocrTesseractExec(imagePath, exportPath, precision, token, ticket);
-        }
-
-        else {}
-
-        removeFile(imagePath);
-
-        System.out.println("Worker process finished");
-
-        latch.countDown();
     }
 
-    public CountDownLatch getLatch() {
-        return latch;
+    public class MessageHandler implements IMessageHandler {
+        public CompletableFuture<Void> onMessageAsync(IMessage message) {
+            final String messageString = new String(message.getBody(),
+                    StandardCharsets.UTF_8);
+
+            separar(messageString);
+
+
+            imagePath = UPLOADED_FOLDER + "Entrada\\" + ticket + extension;
+            exportPath = UPLOADED_FOLDER + "Salida\\" + ticket + ".txt";
+
+            if(ocr.equals("ABYYFR")) {
+                finereaderWorker.ocrFineReaderExec(imagePath,exportPath,precision,token,ticket);
+            }
+            else if (ocr.equals("tesseract")) {
+                doTess(imagePath, exportPath, precision, token, ticket);
+            }
+
+            else {}
+
+            removeFile(imagePath);
+
+            System.out.println("Worker process finished");
+
+            return CompletableFuture.completedFuture(null);
+        }
+
+        public void notifyException(Throwable exception, ExceptionPhase phase) {
+            System.out.println(phase + " encountered exception:" + exception);
+        }
     }
+
+    public void doTess(String imagePath, String exportPath, Integer precision, String token, String ticket) {
+        tesseractWorker.ocrTesseractExec(imagePath, exportPath, precision, token, ticket);
+    }
+
 
     public void removeFile(String path) {
         File fichero = new File(path);

@@ -26,19 +26,19 @@ public class TesseractControl implements ITesseractControl{
     }
 
     public void inProcessTicket(String id) {
-        Ticket ticket = ticketRepository.findOne(id);
+        Ticket ticket = ticketRepository.findById(id).get();
         ticket.setState("Ticket in process");
         ticketRepository.save(ticket);
     }
 
     public void ticketFinished(String id) {
-        Ticket ticket = ticketRepository.findOne(id);
+        Ticket ticket = ticketRepository.findById(id).get();
         ticket.setState("Process finished");
         ticketRepository.save(ticket);
     }
 
     public void ticketWithError(String id, String error) {
-        Ticket ticket = ticketRepository.findOne(id);
+        Ticket ticket = ticketRepository.findById(id).get();
         ticket.setState("Process finished");
         ticket.setError(error);
         ticketRepository.save(ticket);

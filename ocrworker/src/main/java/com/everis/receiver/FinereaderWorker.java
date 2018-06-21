@@ -1,20 +1,13 @@
 package com.everis.receiver;
 
-import com.everis.ApplicationContextProvider;
 import com.everis.autorization.model.Users;
 import com.everis.billingworker.model.License;
 import com.everis.businesslogicworker.interfaces.IProductControl;
-import com.everis.businesslogicworker.logic.ProductControl;
 import com.everis.facturationcontrolworker.interfaces.IFacturationControl;
 import com.everis.finereadercontrolworker.interfaces.IFinereaderControl;
-import com.everis.finereadercontrolworker.logic.FinereaderControl;
 import com.everis.tokenuser.TokenUser;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
-import sun.reflect.Reflection;
 
 import java.sql.Timestamp;
 

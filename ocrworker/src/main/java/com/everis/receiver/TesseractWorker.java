@@ -7,6 +7,7 @@ import com.everis.facturationcontrolworker.interfaces.IFacturationControl;
 import com.everis.finereadercontrolworker.interfaces.IFinereaderControl;
 import com.everis.tesseractcontrolworker.interfaces.ITesseractControl;
 import com.everis.tokenuser.TokenUser;
+import com.microsoft.azure.servicebus.QueueClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import java.sql.Timestamp;
 
 @Component
 public class TesseractWorker {
+
 
     private String idProduct = "tesseract";
 
@@ -25,12 +27,10 @@ public class TesseractWorker {
     @Autowired
     private IFacturationControl iFacturationControl;
 
-    @Autowired
-    private IProductControl iProductControl;
-
     public TesseractWorker() {}
 
     public String ocrTesseractExec(String imagePath, String exportPath, Integer precision, String token, String ticket)  {
+        System.out.println(imagePath);
         iTesseractControl.inProcessTicket(ticket);
         Users users = tokenUser.getUser(token);
 

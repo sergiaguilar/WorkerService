@@ -5,4 +5,7 @@ C:\Workservice\workerservice\businesslayerworker\src\main\java\com\everis\finere
 C:\Workservice\workerservice\businesslayerworker\src\main\java\com\everis\businesslogicworker\interfaces\IProductControl.java
 C:\Workservice\workerservice\businesslayerworker\src\main\java\com\everis\facturationcontrolworker\logic\FacturationControl.java
 C:\Workservice\workerservice\businesslayerworker\src\main\java\com\everis\businesslogicworker\interfaces\IUserControl.java
+C:\Workservice\workerservice\businesslayerworker\src\main\java\com\everis\tesseractcontrolworker\logic\TesseractControl.java
+C:\Workservice\workerservice\businesslayerworker\src\main\java\com\everis\ApplicationContextProvider.java
 C:\Workservice\workerservice\businesslayerworker\src\main\java\com\everis\businesslogicworker\logic\UserControl.java
+C:\Workservice\workerservice\businesslayerworker\src\main\java\com\everis\tesseractcontrolworker\interfaces\ITesseractControl.java

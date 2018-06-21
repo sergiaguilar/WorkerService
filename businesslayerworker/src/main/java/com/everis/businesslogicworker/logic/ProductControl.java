@@ -31,13 +31,13 @@ public class ProductControl implements IProductControl {
     }
 
     public boolean userCanUseProduct(String idProduct, Users users) {
-        Users aux = usersRepository.findOne(users.getIdCompany());
-        Products products = productsRepository.findOne(idProduct);
+        Users aux = usersRepository.findById(users.getIdCompany()).get();
+        Products products = productsRepository.findById(idProduct).get();
         return aux.getProducts().contains(products);
     }
 
     public String getClassName(String idProduct) {
-        Products products = productsRepository.findOne(idProduct);
+        Products products = productsRepository.findById(idProduct).get();
         return products.getClassName();
     }
 }

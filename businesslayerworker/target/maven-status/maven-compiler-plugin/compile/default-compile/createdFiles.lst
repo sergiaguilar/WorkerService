@@ -1,8 +1,11 @@
 com\everis\businesslogicworker\interfaces\IUserControl.class
+com\everis\tesseractcontrolworker\logic\TesseractControl.class
 com\everis\facturationcontrolworker\interfaces\IFacturationControl.class
 com\everis\businesslogicworker\logic\UserControl.class
 com\everis\finereadercontrolworker\interfaces\IFinereaderControl.class
+com\everis\ApplicationContextProvider.class
 com\everis\businesslogicworker\logic\ProductControl.class
 com\everis\facturationcontrolworker\logic\FacturationControl.class
 com\everis\businesslogicworker\interfaces\IProductControl.class
 com\everis\finereadercontrolworker\logic\FinereaderControl.class
+com\everis\tesseractcontrolworker\interfaces\ITesseractControl.class

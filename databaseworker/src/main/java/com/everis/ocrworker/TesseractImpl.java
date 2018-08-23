@@ -41,7 +41,7 @@ public class TesseractImpl {
             int pages = document.getNumberOfPages();
             if(pages + actualVolume > maxVolume) return "Max volume exceeded!";
             if (precision == 3) {
-                File carpeta = new File("C:\\Temp\\Entrada\\" + justName);
+                File carpeta = new File("Z:\\ocr\\entrada\\" + justName);
                 carpeta.mkdir();
                 try {
 
@@ -98,7 +98,7 @@ public class TesseractImpl {
             }
 
             else if (precision == 2) {
-                File carpeta = new File("C:\\Temp\\Entrada\\" + justName);
+                File carpeta = new File("Z:\\ocr\\entrada\\" + justName);
                 carpeta.mkdir();
                 try {
                     PDFRenderer pdfRenderer = new PDFRenderer(document);

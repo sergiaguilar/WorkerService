@@ -9,12 +9,11 @@ import javax.annotation.PostConstruct;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CountDownLatch;
 
 @Component
 public class ReceiverWorker {
 
-    private String UPLOADED_FOLDER = "C:\\Temp\\";
+    private String UPLOADED_FOLDER = "Z:\\ocr\\";
 
     private String imagePath;
     private String exportPath;
@@ -63,8 +62,8 @@ public class ReceiverWorker {
             separar(messageString);
 
 
-            imagePath = UPLOADED_FOLDER + "Entrada\\" + ticket + extension;
-            exportPath = UPLOADED_FOLDER + "Salida\\" + ticket + ".txt";
+            imagePath = UPLOADED_FOLDER + "entrada\\" + ticket + extension;
+            exportPath = UPLOADED_FOLDER + "salida\\" + ticket + ".txt";
 
             if(ocr.equals("ABYYFR")) {
                 finereaderWorker.ocrFineReaderExec(imagePath,exportPath,precision,token,ticket);
